@@ -1,0 +1,2524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operating System</title>
+    <!-- <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+    
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 5px;
+        }
+    
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+    
+        h2 {
+            color: #2980b9;
+            margin-top: 25px;
+            border-left: 4px solid #3498db;
+            padding-left: 10px;
+        }
+    
+        h3 {
+            color: #16a085;
+            margin-top: 20px;
+        }
+    
+        .note {
+            background-color: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+    
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+    
+        li {
+            margin-bottom: 8px;
+        }
+    
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+        }
+    
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+    
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+    
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    
+        .buttons {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    
+        .buttons button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+    
+        .buttons button:hover {
+            background-color: #0056b3;
+        }
+    
+        .content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            min-height: 200px;
+            position: relative;
+        }
+    
+        .tab-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+        }
+    
+        .tab-content.active {
+            display: block;
+            opacity: 1;
+            position: relative;
+        }
+    
+        .terminal {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+    
+        .prompt {
+            color: #2ecc71;
+        }
+    
+        .command {
+            color: #f39c12;
+        }
+    
+        .directory-structure {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            margin: 15px 0;
+        }
+    
+        .task-box {
+            background-color: #f0f7fd;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+    
+        .task-box h4 {
+            margin-top: 0;
+            color: #2980b9;
+        }
+    
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+    
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 5px;
+        }
+    
+        .comparison {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+    
+        .comparison-box {
+            width: 48%;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    
+        .comparison-box h4 {
+            margin-top: 0;
+            color: #2980b9;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+        }
+    
+        .code {
+            font-family: Consolas, Monaco, 'Andale Mono', monospace;
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 3px;
+            border-left: 3px solid #3498db;
+            overflow-x: auto;
+        }
+    
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+    
+        a:hover {
+            text-decoration: underline;
+        }
+    </style> -->
+    <!-- <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            color: #5C4033; /* brownish text */
+            background-color: #FAF3E0; /* light cream */
+        }
+    
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #fffaf0; /* very light cream */
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(92, 64, 51, 0.2); /* brownish shadow */
+            border-radius: 5px;
+        }
+    
+        h1 {
+            color: #5C4033;
+            text-align: center;
+            border-bottom: 2px solid #A67B5B; /* light brown */
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+    
+        h2 {
+            color: #8B5E3C;
+            margin-top: 25px;
+            border-left: 4px solid #A67B5B;
+            padding-left: 10px;
+        }
+    
+        h3 {
+            color: #A0522D; /* sienna brown */
+            margin-top: 20px;
+        }
+    
+        .note {
+            background-color: #fdf6e3; /* creamy background */
+            padding: 15px;
+            border-left: 4px solid #A67B5B;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+    
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+    
+        li {
+            margin-bottom: 8px;
+        }
+    
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 3px rgba(92, 64, 51, 0.1);
+        }
+    
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+    
+        th {
+            background-color: #A67B5B;
+            color: white;
+        }
+    
+        tr:nth-child(even) {
+            background-color: #f9f4ef; /* very light cream */
+        }
+    
+        .buttons {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    
+        .buttons button {
+            background-color: #8B5E3C;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+    
+        .buttons button:hover {
+            background-color: #5C4033;
+        }
+    
+        .content {
+            background: #fffaf0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(92,64,51,0.1);
+            transition: all 0.3s ease;
+            min-height: 200px;
+            position: relative;
+        }
+    
+        .tab-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+        }
+    
+        .tab-content.active {
+            display: block;
+            opacity: 1;
+            position: relative;
+        }
+    
+        .terminal {
+            background-color: #5C4033;
+            color: #FAF3E0;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+    
+        .prompt {
+            color: #C19A6B;
+        }
+    
+        .command {
+            color: #D2B48C;
+        }
+    
+        .directory-structure {
+            background-color: #fdf6e3;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            margin: 15px 0;
+        }
+    
+        .task-box {
+            background-color: #f9f1e7;
+            border-left: 4px solid #A67B5B;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+    
+        .task-box h4 {
+            margin-top: 0;
+            color: #8B5E3C;
+        }
+    
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+    
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(92,64,51,0.1);
+            padding: 5px;
+        }
+    
+        .comparison {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+    
+        .comparison-box {
+            width: 48%;
+            padding: 15px;
+            background-color: #fff8ee;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(92,64,51,0.1);
+        }
+    
+        .comparison-box h4 {
+            margin-top: 0;
+            color: #8B5E3C;
+            border-bottom: 2px solid #A67B5B;
+            padding-bottom: 5px;
+        }
+    
+        .code {
+            font-family: Consolas, Monaco, 'Andale Mono', monospace;
+            background-color: #fdf6e3;
+            padding: 10px;
+            border-radius: 3px;
+            border-left: 3px solid #A67B5B;
+            overflow-x: auto;
+        }
+    
+        a {
+            color: #A67B5B;
+            text-decoration: none;
+        }
+    
+        a:hover {
+            text-decoration: underline;
+        }
+    </style> -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            color: #5C4033;
+            background-color: #FAF3E0;
+        }
+    
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #fffaf0;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(92, 64, 51, 0.2);
+            border-radius: 5px;
+        }
+    
+        h1 {
+            color: #5C4033;
+            text-align: center;
+            border-bottom: 2px solid #A67B5B;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        h5{
+            color: #5C4033;
+            text-align: center;
+            border-bottom: 2px solid #A67B5B;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+    
+        h2 {
+            color: #8B5E3C;
+            margin-top: 25px;
+            border-left: 4px solid #A67B5B;
+            padding-left: 10px;
+        }
+    
+        h3 {
+            color: #A0522D;
+            margin-top: 20px;
+        }
+    
+        .note {
+            background-color: #fdf6e3;
+            padding: 15px;
+            border-left: 4px solid #A67B5B;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+    
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+    
+        li {
+            margin-bottom: 8px;
+        }
+    
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 3px rgba(92, 64, 51, 0.1);
+        }
+    
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+    
+        th {
+            background-color: #A67B5B;
+            color: white;
+        }
+    
+        tr:nth-child(even) {
+            background-color: #f9f4ef;
+        }
+    
+        .buttons {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    
+        .buttons button {
+            background: linear-gradient(135deg, #8B5E3C, #A67B5B);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            margin: 5px;
+            font-size: 16px;
+            border-radius: 50px; /* pill shape */
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(92, 64, 51, 0.2);
+        }
+    
+        .buttons button:hover {
+            background: linear-gradient(135deg, #5C4033, #8B5E3C);
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(92, 64, 51, 0.3);
+        }
+    
+        .content {
+            background: #fffaf0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(92,64,51,0.1);
+            transition: all 0.3s ease;
+            min-height: 200px;
+            position: relative;
+        }
+    
+        .tab-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+        }
+    
+        .tab-content.active {
+            display: block;
+            opacity: 1;
+            position: relative;
+        }
+    
+        .terminal {
+            background-color: #5C4033;
+            color: #FAF3E0;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+    
+        .prompt {
+            color: #C19A6B;
+        }
+    
+        .command {
+            color: #D2B48C;
+        }
+    
+        .directory-structure {
+            background-color: #fdf6e3;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            margin: 15px 0;
+        }
+    
+        .task-box {
+            background-color: #f9f1e7;
+            border-left: 4px solid #A67B5B;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+    
+        .task-box h4 {
+            margin-top: 0;
+            color: #8B5E3C;
+        }
+    
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+    
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(92,64,51,0.1);
+            padding: 5px;
+        }
+    
+        .comparison {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+    
+        .comparison-box {
+            width: 48%;
+            padding: 15px;
+            background-color: #fff8ee;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(92,64,51,0.1);
+        }
+    
+        .comparison-box h4 {
+            margin-top: 0;
+            color: #8B5E3C;
+            border-bottom: 2px solid #A67B5B;
+            padding-bottom: 5px;
+        }
+    
+        .code {
+            font-family: Consolas, Monaco, 'Andale Mono', monospace;
+            background-color: #fdf6e3;
+            padding: 10px;
+            border-radius: 3px;
+            border-left: 3px solid #A67B5B;
+            overflow-x: auto;
+        }
+    
+        a {
+            color: #A67B5B;
+            text-decoration: none;
+        }
+    
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Operating Systems Assignment</h1>
+        <h5>By Ayesha Zamurd (49733)</h5>
+        <h2>Introduction to Software</h2>
+        <div class="note">
+            <p><strong>Software</strong> refers to the written instructions or programs that control computer operations. It acts as a mediator between users and computer hardware.</p>
+        </div>
+        
+        <h3>Types of Software</h3>
+        <ul>
+            <li><strong>Application Software:</strong> Solves user-specific problems (e.g., word processors, games, database managers)</li>
+            <li><strong>System Software:</strong> Operates and controls computer processing capabilities (e.g., operating systems, compilers)</li>
+        </ul>
+        
+        <h2>Operating Systems</h2>
+        <p>An <strong>Operating System (OS)</strong> is a type of system software that:</p>
+        <ol>
+            <li>Provides a user interface for human-computer interaction</li>
+            <li>Manages computer resources (memory, devices, files, etc.)</li>
+        </ol>
+        
+        <h3>Key OS Tasks</h3>
+        <ul>
+            <li>Process scheduling</li>
+            <li>Inter-process communication</li>
+            <li>Synchronization</li>
+            <li>Memory management</li>
+            <li>Resource management</li>
+            <li>Directory and file management</li>
+        </ul>
+        
+        <h2>Types of Operating Systems</h2>
+        <h3>Desktop Operating Systems</h3>
+        <p>General purpose OS for personal computers (e.g., Windows, macOS, Linux)</p>
+        
+        <h3>Server Operating Systems</h3>
+        <p>Designed for server environments with features like:</p>
+        <ul>
+            <li>Optional GUI</li>
+            <li>Dedicated roles (web server, file server, etc.)</li>
+            <li>Advanced backup facilities</li>
+        </ul>
+        
+        
+        <div class="buttons">
+            <button onclick="showContent('lab1')">Linus OS</button>
+            <button onclick="showContent('lab2')">Installation & File System</button>
+            <button onclick="showContent('lab3')">Basic Directory Commands</button>
+            <button onclick="showContent('lab4')">File Editors</button>
+            <button onclick="showContent('lab5')">Basic Commands & File Sharing</button>
+            <button onclick="showContent('lab6')">C Programming in Linux</button>
+            <button onclick="showContent('lab7')">Streams & I/O Redirections</button>
+            <button onclick="showContent('lab8')">System Calls</button>
+            <button onclick="showContent('lab9')">Shell Scripting</button>
+            <button onclick="showContent('lab10')">Shell Control Flow</button>
+            <button onclick="showContent('lab11')">Loops/Fuctions</button>
+            <button onclick="showContent('lab12')">Signals</button>
+          </div>
+</div>
+        <div class="container">
+        <div id="lab1" class="tab-content active">
+        <h2>Linux Operating System</h2>
+        <p>Linux is a multi-user, multitasking OS based on UNIX. It's widely used on servers, supercomputers, and mobile devices (Android is built on Linux kernel).</p>
+        
+        <h3>Linux System Components</h3>
+        <ol>
+            <li><strong>Shell:</strong> User interface that interprets commands
+                <table>
+                    <tr>
+                        <th>Shell Name</th>
+                        <th>Developed By</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>BASH</td>
+                        <td>Brian Fox & Chet Ramey</td>
+                        <td>Most common Linux shell (Bourne-Again SHell)</td>
+                    </tr>
+                    <tr>
+                        <td>CSH</td>
+                        <td>Bill Joy</td>
+                        <td>C-like syntax (C SHell)</td>
+                    </tr>
+                    <tr>
+                        <td>KSH</td>
+                        <td>David Korn</td>
+                        <td>Korn SHell</td>
+                    </tr>
+                </table>
+            </li>
+            <li><strong>Kernel:</strong> Core of the OS that manages hardware, processes, memory, and I/O</li>
+        </ol>
+        
+        <h2>Files and Directories</h2>
+        <p>Files store information (text or binary), while directories are special files that contain information about files and other directories.</p>
+        
+        <h3>File Operations</h3>
+        <ul>
+            <li>Create, delete, open, close</li>
+            <li>Read, write, append</li>
+            <li>Seek, rename</li>
+            <li>Get/set attributes</li>
+        </ul>
+        
+        <h3>File Attributes</h3>
+        <ul>
+            <li>File name and type</li>
+            <li>Creator and owner</li>
+            <li>Creation and modification dates</li>
+            <li>Current and maximum size</li>
+        </ul>
+    </div>
+<div id="lab2"class="tab-content">
+    <h2>Running Multiple Operating Systems</h2>
+        
+        <div class="comparison">
+            <div class="comparison-box">
+                <h4>Dual Boot</h4>
+                <ul>
+                    <li>Allows selection of OS during startup</li>
+                    <li>Only one OS can run at a time</li>
+                    <li>Requires restart to switch OS</li>
+                    <li>Each OS works independently</li>
+                </ul>
+            </div>
+            
+            <div class="comparison-box">
+                <h4>Virtualization</h4>
+                <ul>
+                    <li>Runs multiple OS simultaneously</li>
+                    <li>Uses software like VirtualBox or VMware</li>
+                    <li>Guest OS runs within host OS</li>
+                    <li>Requires hardware virtualization support</li>
+                    <li>Performance depends on host system</li>
+                </ul>
+            </div>
+        </div>
+        
+        <h3>VMware Overview</h3>
+        <ul>
+            <li>VMware Workstation: First product launched in 1999</li>
+            <li>VMware Fusion: For Intel Mac platform</li>
+            <li>Allows running multiple OS on a single physical PC</li>
+        </ul>
+        
+        <h2>Linux (Ubuntu) Installation Requirements</h2>
+        <ul>
+            <li>Virtualization software (VMware/Virtual Box)</li>
+            <li>Ubuntu ISO image file</li>
+            <li>Hardware virtualization enabled in BIOS</li>
+        </ul>
+        
+        <h2>Linux File System Organization</h2>
+        <div class="image-container">
+            <img src="linux_filesystem.png" alt="Linux Directory Structure">
+        </div>
+        
+        <h3>Key File System Terms</h3>
+        <table>
+            <tr>
+                <th>Term</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>Root Directory (/)</td>
+                <td>The top-most directory in the hierarchy</td>
+            </tr>
+            <tr>
+                <td>Directory</td>
+                <td>A file that holds other files and sub-directories</td>
+            </tr>
+            <tr>
+                <td>Subdirectory</td>
+                <td>A directory within another directory</td>
+            </tr>
+            <tr>
+                <td>Home Directory</td>
+                <td>Default working directory when a user logs in</td>
+            </tr>
+            <tr>
+                <td>Current/Working Directory</td>
+                <td>The directory currently being used</td>
+            </tr>
+            <tr>
+                <td>Pathname</td>
+                <td>Reference to identify a file within the directory structure</td>
+            </tr>
+        </table>
+        
+        <h3>Pathname Types</h3>
+        
+        <div class="comparison">
+            <div class="comparison-box">
+                <h4>Absolute Pathname</h4>
+                <ul>
+                    <li>Starts from root directory (/)</li>
+                    <li>Independent of current directory</li>
+                    <li>Example: <span class="code">/usr/local/lib/filename</span></li>
+                </ul>
+            </div>
+            
+            <div class="comparison-box">
+                <h4>Relative Pathname</h4>
+                <ul>
+                    <li>Depends on current directory</li>
+                    <li>Doesn't start with /</li>
+                    <li>Example (if current dir is /usr/local): <span class="code">lib/filename</span></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="note">
+            <p><strong>Example Path:</strong> <span class="code">/usr/users/bill/letters/pay</span> means:
+            <br>Start at root (/), move to usr → users → bill → letters → file "pay"</p>
+        </div>
+</div>
+
+<div id="lab3" class="tab-content">
+    <h2>Linux Terminal Basics</h2>
+        
+    <div class="terminal">
+        <span class="prompt">[onworks@onworks:~] $</span> <span class="command">ls</span>
+    </div>
+    
+    <p>The Linux terminal prompt consists of:</p>
+    <ul>
+        <li><strong>User Name:</strong> Current login user (onworks)</li>
+        <li><strong>Machine Name:</strong> Name of machine (onworks)</li>
+        <li><strong>Current Path:</strong> ~ indicates home directory</li>
+        <li><strong>Prompt Sign:</strong> $ for regular user, # for root</li>
+    </ul>
+    
+    <div class="note">
+        <p><strong>Important:</strong> Linux commands are case-sensitive and typically use lowercase letters.</p>
+    </div>
+    
+    <h2>Linux Directory Structure</h2>
+    <p>Linux follows a standard directory hierarchy borrowed from UNIX:</p>
+    
+    <div class="directory-structure">
+        / (root)<br>
+        ├── bin (essential binaries)<br>
+        ├── etc (configuration files)<br>
+        ├── home (user directories)<br>
+        ├── lib (system libraries)<br>
+        ├── tmp (temporary files)<br>
+        ├── usr (user programs)<br>
+        └── var (log files)
+    </div>
+    
+    <h2>Basic Directory Commands</h2>
+    
+    <h3>1. ls Command (Listing Files)</h3>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>ls</td>
+            <td>List files in current directory</td>
+        </tr>
+        <tr>
+            <td>ls -a</td>
+            <td>Show all files including hidden</td>
+        </tr>
+        <tr>
+            <td>ls -l</td>
+            <td>Detailed file information</td>
+        </tr>
+        <tr>
+            <td>ls -r</td>
+            <td>List files in reverse order</td>
+        </tr>
+    </table>
+    
+    <div class="image-container">
+        <img src="ls_command_example.png" alt="Example of ls command output">
+    </div>
+    
+    <h3>2. cd Command (Changing Directory)</h3>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>cd</td>
+            <td>Change to home directory</td>
+        </tr>
+        <tr>
+            <td>cd /</td>
+            <td>Move to root directory</td>
+        </tr>
+        <tr>
+            <td>cd ..</td>
+            <td>Move up one directory level</td>
+        </tr>
+        <tr>
+            <td>cd dir-name</td>
+            <td>Move to specific directory</td>
+        </tr>
+    </table>
+    
+    <h3>3. mkdir Command (Creating Directories)</h3>
+    <div class="terminal">
+        <span class="prompt">[user@localhost ~] $</span> <span class="command">mkdir Books</span><br>
+        <span class="prompt">[user@localhost ~] $</span> <span class="command">ls</span><br>
+        Books Documents Downloads
+    </div>
+    
+    <p>To create nested directories:</p>
+    <div class="terminal">
+        <span class="prompt">[user@localhost Documents] $</span> <span class="command">mkdir OS Lab Quiz</span>
+    </div>
+    
+    <h3>4. pwd Command (Print Working Directory)</h3>
+    <div class="terminal">
+        <span class="prompt">[user@localhost classical] $</span> <span class="command">pwd</span><br>
+        /home/user/books/physics/classical
+    </div>
+    
+    <h3>5. rmdir Command (Removing Directories)</h3>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>rmdir dir-name</td>
+            <td>Remove empty directory</td>
+        </tr>
+        <tr>
+            <td>rm -r dir-name</td>
+            <td>Remove directory with contents</td>
+        </tr>
+    </table>
+    
+    <h2>Important Linux Directories</h2>
+    <table>
+        <tr>
+            <td><strong>/home</strong></td>
+            <td>Users' home directories</td>
+        </tr>
+        <tr>
+            <td><strong>/etc</strong></td>
+            <td>System configuration files</td>
+        </tr>
+        <tr>
+            <td><strong>/bin</strong></td>
+            <td>Essential system commands</td>
+        </tr>
+        <tr>
+            <td><strong>/usr/bin</strong></td>
+            <td>Common user programs</td>
+        </tr>
+        <tr>
+            <td><strong>/var</strong></td>
+            <td>Log files and temporary data</td>
+        </tr>
+    </table>
+</div>
+<div id="lab6" class="tab-content">
+    <h2>C Programming in Linux:</h2>
+    <p>In windows environment, we have seen different tools and IDEs like <strong>Visual Studio (VC++)</strong>, <strong>Code::blocks</strong> and <strong>DEV-C++</strong>, but in Linux we don't have such tools, we have to use command line tool like GCC. We can compile and run C programs using GCC Compiler.</p>
+
+    <h3>GCC</h3>
+    <p>The GNU Compiler Collection (GCC) is a compiler system produced by the GNU Project. Originally named the <strong>GNU C Compiler</strong>, when it only handled the programming languages. GCC 1.0 was released in 1987. It was extended to compile C++ in December of that year. Later developed for Objective C/C++, Java, and FORTRAN.</p>
+    <p>You can check which version of gcc is installed by command: <strong>gcc --version</strong>.</p>
+    <p><strong>If gcc not installed you can try</strong></p>
+    <div class="terminal">
+        <span class="prompt">$</span> <span class="command">sudo apt install gcc</span>
+    </div>
+    <p>After installation, any file containing source code for C program should be saved with the extension <strong>.c</strong> or <strong>.cpp</strong>. For example <strong>test.c</strong>.</p>
+    <p>Consider the following example: Let "<strong>hello.c</strong>" (only save files with .c extension only) be a file that contains the following C code.</p>
+    <div class="code">
+        <pre>#include &lt;stdio.h&gt;
+
+int main()
+{
+printf("Hello...\n");
+return 0;
+}</pre>
+    </div>
+    <p>A standard way to compile this program is with the command</p>
+    <div class="terminal">
+        <span class="prompt">$</span> <span class="command">gcc hello.c -o hello</span>
+    </div>
+    <p>This command compiles <strong>hello.c</strong> into an executable program named "hello" that you run by typing <strong>./hello</strong> at the command line. It does nothing more than print "Hello..." on the screen.</p>
+    <div class="note">
+        <strong>Note:</strong> You need to have execute permission to run that file.
+    </div>
+    <p><strong>gcc</strong> has an option <strong>--o</strong> to specify the name of the output file. If the name of the output file is not specified, <strong>gcc</strong> names the output file <strong>a.out</strong> by default.</p>
+    <p>Once you got the source program compiled successfully, its object file is ready to be execute. To execute the object file type following command line on the prompt.</p>
+    <div class="terminal">
+        <span class="prompt">$</span> <span class="command">./hello</span>
+    </div>
+    <p>(Note:- Never type ./hello.c)</p>
+
+    <h3>Exercise</h3>
+    <p>Write a C program that asks the user to enter two number and print their sum.</p>
+
+    <h2>Background and Foreground Processing</h2>
+    <p>Since Linux is a multi-tasking system, therefore, there are number of processes running alternatively. When a command is entered through the command prompt, the operating system starts the process and the command is executed. The command prompt does not appear until the command is finished. In fact at that moment the CPU is executing the command. After the executing the command, it will re-display the prompt to indicate your process is finished. Such a processing is called <strong>foreground processing</strong>. There can only be one foreground process.</p>
+
+    <h3>Background Processing</h3>
+    <p>As there are number of processes are running at the same time, all the processes except foreground process, are known as <strong>background processes</strong>.</p>
+    <p>What if you want to run a command that takes minutes to execute? In that case, the system provides an option to run process in background, as long as the background programs do not require input from the keyboard.</p>
+    <p>Unless you redirect output, both background and foreground processes use terminal to display for standard output (e.g. messages, outputs, etc.). Therefore, if your background job produces output to the terminal, you will need to redirect, the output to a file.</p>
+
+    <h3>When to run a process in background</h3>
+    <p>The answer is straightforward. If a process will take a little bit long time in its execution, and does not require any keyboard input, then it would be desirable to run the process in the background. For example, sorting a long data file. So if a time consuming process is running in background, one can continue working at the terminal on other process.</p>
+
+    <h3>How to execute a command/process in background:</h3>
+    <p>To run a command or process in background, the command or process must follow by <strong>&amp;</strong> (ampersand) sign.</p>
+
+    <h3>Example</h3>
+    <p>If you have a large numeric data file to be sorted, it may take few seconds for processing. You batter run sort command as background process like this:</p>
+    <div class="terminal">
+        <span class="prompt">$</span> <span class="command">sudo yum install java-devel &amp;</span>
+    </div>
+    <p>The system will display process id of sort command, and returns the prompt ($), while the sort command will be running in back ground.</p>
+
+    <h3>Exercise</h3>
+    <p>Try to run different commands as background processes.</p>
+
+    <h3>The <em>ps</em> Command</h3>
+    <p>It is used to display the currently running processes on Unix/Linux systems. If you know the 'Task-Manager" which pops up under Windows NT/2000/XP/7 when you press CTRL+ALT+DEL then you will quickly grasp what <em>ps</em> does on Linux.</p>
+
+    <h3>Terminating a Process</h3>
+    <p>Not all programs behave normally all the time. A program might be in an infinite loop or waiting for resources that are not available. Linux provides <strong>kill</strong> command to terminate the unwanted process. The <strong>kill</strong> command sends a signal to the specified process. The signal is an integer number, and the process is identified by the process ID number (PID).</p>
+    <div class="terminal">
+        <span class="prompt">$</span> <span class="command">kill -9 5432</span>
+    </div>
+    <p>Here --9 is kill signal and 5432 is process ID, which is going to be killed.</p>
+    <p>First use <strong>ps</strong> command to list the processes.</p>
+
+    <h3>Exercise</h3>
+    <p>Write C program having infinite loop like</p>
+    <div class="code">
+        <pre>int x=1;
+while(1)
+{
+printf("Running %d\n",x);</pre>
+}
+</div>
+</div>
+
+<div id="lab5" class="tab-content">
+    <h3>File Sharing Between Host and Guest OS</h3>
+    <ol>
+        <li>In VMware, right-click virtual machine → "Virtual machine settings"</li>
+        <li>Options → Shared folders</li>
+        <li>Select "Always enable" → Add</li>
+        <li>Browse to folder → Follow instructions</li>
+    </ol>
+    <p>Shared folders appear under <span class="command">/mnt/hgfs</span> in Linux</p>
+    <h3>Basic Linux Commands</h3>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+            <th>Example</th>
+        </tr>
+        <tr>
+            <td>date</td>
+            <td>Display current date and time</td>
+            <td><span class="command">date</span></td>
+        </tr>
+        <tr>
+            <td>clear</td>
+            <td>Clear terminal screen</td>
+            <td><span class="command">clear</span></td>
+        </tr>
+        <tr>
+            <td>echo</td>
+            <td>Display text/arguments</td>
+            <td><span class="command">echo "Hello"</span></td>
+        </tr>
+        <tr>
+            <td>who</td>
+            <td>List logged-in users</td>
+            <td><span class="command">who</span></td>
+        </tr>
+        <tr>
+            <td>whoami</td>
+            <td>Show current username</td>
+            <td><span class="command">whoami</span></td>
+        </tr>
+    </table>
+    
+    <h3>System Information Commands</h3>
+    
+    <div class="terminal">
+        <span class="prompt">$</span> <span class="command">uname -a</span><br>
+        Linux hostname 5.4.0-42-generic #46-Ubuntu SMP Fri Jul 10 00:24:02 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux
+    </div>
+    
+    <table>
+        <tr>
+            <th>Option</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>-a</td>
+            <td>All system information</td>
+        </tr>
+        <tr>
+            <td>-n</td>
+            <td>Network node hostname</td>
+        </tr>
+        <tr>
+            <td>-r</td>
+            <td>Kernel release</td>
+        </tr>
+        <tr>
+            <td>-v</td>
+            <td>Kernel version</td>
+        </tr>
+        <tr>
+            <td>-m</td>
+            <td>Machine hardware name</td>
+        </tr>
+        <tr>
+            <td>-p</td>
+            <td>Processor type</td>
+        </tr>
+        <tr>
+            <td>-o</td>
+            <td>Operating system</td>
+        </tr>
+    </table>
+    <h3>Sort Command</h3>
+    
+    <div class="terminal">
+        <span class="prompt">$</span> <span class="command">sort labSort</span><br>
+        <span class="prompt">$</span> <span class="command">sort -n SortLabNumeric</span>
+    </div>
+    
+    <table>
+        <tr>
+            <th>Option</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>-r</td>
+            <td>Reverse sort order</td>
+        </tr>
+        <tr>
+            <td>-b</td>
+            <td>Ignore leading blanks</td>
+        </tr>
+        <tr>
+            <td>-f</td>
+            <td>Case insensitive sort</td>
+        </tr>
+        <tr>
+            <td>-k</td>
+            <td>Sort by column</td>
+        </tr>
+        <tr>
+            <td>-n</td>
+            <td>Numeric sort</td>
+        </tr>
+    </table>
+</div>
+
+
+<div id="lab4" class="tab-content">
+    <h2>Lab 4: File Editors & Permissions</h2>
+            
+            <h3>File Editors</h3>
+            
+            <div class="comparison">
+                <div class="comparison-box">
+                    <h4>Pico Editor</h4>
+                    <div class="terminal">
+                        <span class="prompt">$</span> <span class="command">pico notes</span>
+                    </div>
+                    <ul>
+                        <li>Basic text editor</li>
+                        <li>Ctrl-O to save</li>
+                        <li>Ctrl-X to exit</li>
+                    </ul>
+                </div>
+                
+                <div class="comparison-box">
+                    <h4>Nano Editor</h4>
+                    <div class="terminal">
+                        <span class="prompt">$</span> <span class="command">nano notes</span>
+                    </div>
+                    <ul>
+                        <li>More advanced than Pico</li>
+                        <li>Ctrl-O to save ("write out")</li>
+                        <li>Ctrl-X to exit</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3>File Management Commands</h3>
+            
+            <table>
+                <tr>
+                    <th>Command</th>
+                    <th>Description</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td>cat</td>
+                    <td>View, concatenate, or create files</td>
+                    <td><span class="command">cat filename</span></td>
+                </tr>
+                <tr>
+                    <td>cp</td>
+                    <td>Copy files/directories</td>
+                    <td><span class="command">cp oldFile newFile</span></td>
+                </tr>
+                <tr>
+                    <td>mv</td>
+                    <td>Move or rename files</td>
+                    <td><span class="command">mv oldName newName</span></td>
+                </tr>
+            </table>
+            
+            <h3>File Permissions</h3>
+            
+            <div class="permission-visual">
+                -rw-r--r-- 1 saleem stud 700 Jun 19 08:00 data.file
+            </div>
+            
+            <p>File permissions breakdown:</p>
+            <ol>
+                <li><strong>File type</strong> (- for file, d for directory)</li>
+                <li><strong>Owner permissions</strong> (rw-)</li>
+                <li><strong>Group permissions</strong> (r--)</li>
+                <li><strong>Others permissions</strong> (r--)</li>
+                <li>Number of links</li>
+                <li>Owner name</li>
+                <li>Group name</li>
+                <li>File size</li>
+                <li>Last modified date/time</li>
+                <li>File name</li>
+            </ol>
+            
+            <h4>Permission Types</h4>
+            <table>
+                <tr>
+                    <th>Symbol</th>
+                    <th>Permission</th>
+                    <th>File Meaning</th>
+                    <th>Directory Meaning</th>
+                </tr>
+                <tr>
+                    <td>r</td>
+                    <td>Read</td>
+                    <td>View file contents</td>
+                    <td>List directory contents</td>
+                </tr>
+                <tr>
+                    <td>w</td>
+                    <td>Write</td>
+                    <td>Modify file contents</td>
+                    <td>Add/remove files</td>
+                </tr>
+                <tr>
+                    <td>x</td>
+                    <td>Execute</td>
+                    <td>Run as program</td>
+                    <td>Access directory (cd)</td>
+                </tr>
+            </table>
+            
+            <h3>Changing Permissions with chmod</h3>
+            
+            <div class="comparison">
+                <div class="comparison-box">
+                    <h4>Symbolic Method</h4>
+                    <div class="terminal">
+                        <span class="prompt">$</span> <span class="command">chmod u+rwx,g+rx,o+r filename</span>
+                    </div>
+                    <p>Where:</p>
+                    <ul>
+                        <li><strong>u</strong> = user/owner</li>
+                        <li><strong>g</strong> = group</li>
+                        <li><strong>o</strong> = others</li>
+                        <li><strong>a</strong> = all (equivalent to ugo)</li>
+                        <li><strong>+</strong> = add permission</li>
+                        <li><strong>-</strong> = remove permission</li>
+                        <li><strong>=</strong> = set exact permission</li>
+                    </ul>
+                </div>
+                
+                <div class="comparison-box">
+                    <h4>Numeric Method</h4>
+                    <div class="terminal">
+                        <span class="prompt">$</span> <span class="command">chmod 755 filename</span>
+                    </div>
+                    <p>Permission values:</p>
+                    <ul>
+                        <li><strong>4</strong> = read (r)</li>
+                        <li><strong>2</strong> = write (w)</li>
+                        <li><strong>1</strong> = execute (x)</li>
+                    </ul>
+                    <p>Three-digit number represents:</p>
+                    <ul>
+                        <li>First digit: owner</li>
+                        <li>Second digit: group</li>
+                        <li>Third digit: others</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3>User and Group Information</h3>
+            <div class="terminal">
+                <span class="prompt">$</span> <span class="command">id</span><br>
+                uid=275(john1), group=50(staff)
+            </div>
+</div>
+
+<div id="lab7" class="tab-content">
+    <h3>Streams:</h3>
+    <p>In the computer field streams is an abstract idea. Informally, anything flow into the computer in the form of input, and anything flow out of computer in form of output are referred as streams. Formally, input flowing from input device like keyboard to memory is referred as input stream, and output flowing from memory to output device is referred as output stream. So streams are associated with flow of data.</p>
+    
+    <p>As we know when a Linux command executes it may take input before execution and gives some results after execution. Therefore, each command in Linux is associated with streams. Stream associated with the execution of Linux commands are:</p>
+    
+    <ul>
+        <li><strong>Standard Input Stream (Stdin)</strong></li>
+        <li><strong>Standard Output Stream (Stdout), and</strong></li>
+        <li><strong>Standard error Stream (Stderr)</strong></li>
+    </ul>
+    
+    <p>Normally, standard input flows from keyboard to the memory, and standard output and standard error flow to the terminal. When a Linux command executes, in case of errors, errors messages flow as output from computer to the terminal, is called <strong>standard error stream</strong>.</p>
+    
+    <h3>I/O Redirections:</h3>
+    <p>Redirection changes the assignments for standard input and standard output. In normal cases standard input comes from keyboard, and standard output goes to the screen. The term <strong>redirection</strong> is used when the standard input will not be coming from the keyboard, but from some other source like a file, and standard output will not be going to screen, but to some other sources like file or to other commands.</p>
+    
+    <p>In the case of I/O redirection the shell should be informed. To tell the shell to <strong>redirect</strong> input or output of any command, following characters are used.</p>
+    
+    <table>
+        <tr>
+            <th>Operator</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><strong>></strong></td>
+            <td>Redirects output of a command to a file or device (e.g. printer). Overwrites the file if it exists or creates a new one</td>
+        </tr>
+        <tr>
+            <td><strong>>></strong></td>
+            <td>It is similar to >, except if the target file already exists, the new output is append to its end.</td>
+        </tr>
+        <tr>
+            <td><strong><</strong></td>
+            <td>Redirects input of command from a file or device.</td>
+        </tr>
+        <tr>
+            <td><strong><<</strong></td>
+            <td>The redirect operator << is used mostly in script files (shell programs) to provide input to other commands.</td>
+        </tr>
+        <tr>
+            <td><strong>|</strong></td>
+            <td>Sends the output of one command to become the input of another command.</td>
+        </tr>
+    </table>
+    
+    <h4>Redirecting Output</h4>
+    <p>Normally, the output is sent to screen, output can be sent to some other source like a file. The operator > is used with a command to redirect output.</p>
+    
+    <p>The format is as follow:</p>
+    <div class="terminal">
+        <span class="prompt">$</span> <span class="command">command > filename</span>
+    </div>
+    <p>or</p>
+    <div class="terminal">
+        <span class="prompt">$</span> <span class="command">command >> filename</span>
+    </div>
+    
+    <h5>Example</h5>
+    <p>As we know when the <strong>date</strong> command executes it sends its output to the screen. The output from the <strong>date</strong> command, for example, can be sent to a file <strong>xyz</strong>.</p>
+    <div class="terminal">
+        <span class="prompt">$</span> <span class="command">date > xyz</span>
+    </div>
+    
+    <div class="note">
+        <strong>Note:</strong>
+        <ul>
+            <li>If the file already exists, then it will be over written, and the contents of the existing file are lost.</li>
+            <li>If the specified filename does not exist, then the shell creates one to save the output in it.</li>
+        </ul>
+    </div>
+    
+    <h4>Redirecting Input</h4>
+    <p>Normally, the input is taken from keyboard; input can be taken from other source like file. The operator < is used for redirecting input.</p>
+    
+    <p>The standard input may be received from a file rather than the keyboard. The operator < reads standard input from file rather than keyboard. The format is as follow:</p>
+    <div class="terminal">
+        <span class="prompt">$</span> <span class="command">command < filename</span>
+    </div>
+    <p>or</p>
+    <div class="terminal">
+        <span class="prompt">$</span> <span class="command">command << filename</span>
+    </div>
+    
+    <h5>Example</h5>
+    <div class="terminal">
+        <span class="prompt">$</span> <span class="command">cat < datafile</span>
+    </div>
+    <p>The contents of <strong>datafile</strong> are read into the standard input by redirection operation. Then the <strong>cat</strong> command reads the input and displays the contents.</p>
+    
+    <h4>Combining Redirection Operators</h4>
+    <p>The redirection operations for both standard input and standard output can be combined. For example, in this example, the standard input has been redirected to receive its data from a file, and the standard output has been redirected to place its data in a file.</p>
+    <div class="terminal">
+        <span class="prompt">$</span> <span class="command">cat < fileone > filetwo</span>
+    </div>
+    
+    <h3>Pipe Operator ( | )</h3>
+    <p>In case of redirection, the standard input and output are redirected to elsewhere (terminal, printer or file) than the default. The <strong>pipe</strong> command sends output of one Linux command to another Linux command. The <strong>pipe ( | ) operator</strong> (vertical bar) is placed between the two commands forms a connection between them. The pipe operation receives output from the command place before the pipe operator and sends this output as an input command placed after the pipe operator. The general format is as follows:</p>
+    
+    <div class="terminal">
+        <span class="prompt">$</span> <span class="command">Command A | Command B</span>
+    </div>
+    
+    <h5>Example</h5>
+    <p>The commands <strong>ls</strong> and <strong>lpr</strong> (printer) can be combined with the pipe. The list of filenames output by the <strong>ls</strong> command is piped into <strong>lpr</strong> command.</p>
+    <div class="terminal">
+        <span class="prompt">$</span> <span class="command">ls | lpr</span>
+    </div>
+    
+    <h3>The system() function</h3>
+    <p>To run a Linux command we type the command on the command prompt, e.g. to list all files in a given directory we use ls command.</p>
+    <div class="terminal">
+        <span class="prompt">$</span> <span class="command">ls</span>
+    </div>
+    
+    <p>In order to execute this command from a C-program the system call system() is used.</p>
+    
+    <h4>Syntax:</h4>
+    <div class="code">
+        system(command)
+    </div>
+    
+    <p>This function is declared in <strong>&lt;stdlib.h&gt;</strong>, the system returns the value <strong>-1</strong> if the <strong>system()</strong> does not executed, and <strong>0</strong> if executed successfully.</p>
+    
+    <h4>Examples</h4>
+    <p>The following program lists all the files in the current directory using C Program.</p>
+    
+    <h5>Example 1:</h5>
+    <div class="code">
+        <pre>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt; // Needed for system()
+
+int main() {
+int result = system("ls"); // Run the 'ls' command
+if (result == -1) {
+printf("Command execution failed.\n");
+} else {
+printf("Command executed successfully.\n");
+}
+return 0;
+}</pre>
+    </div>
+    
+    <h5>Example 2:</h5>
+    <div class="code">
+        <pre>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+int main () {
+char command[50];
+strcpy( command, "ls -l" );
+system(command);
+return(0);
+}</pre>
+    </div>
+</div>
+
+
+<div id="lab8" class="tab-content">
+    <h3>System Calls</h3>
+    <p>A Linux System Call is an <strong>interface</strong> between your <em>program and the kernel</em>. The services required from the kernel, maybe memory managers, and device drivers. System calls are the <strong>methods</strong> by which users request these services from the kernel.</p>
+    
+    <h4>Common System Calls</h4>
+    <p>There are a lot of system calls, a few of them related to:</p>
+    <ul>
+        <li><strong>Process Management</strong>
+            <ul>
+                <li>getpid(), getuid(), getgid(), etc.</li>
+            </ul>
+        </li>
+        <li><strong>File I/O</strong>
+            <ul>
+                <li>create(), open(), close(), etc.</li>
+            </ul>
+        </li>
+        <li><strong>Process Control</strong>
+            <ul>
+                <li>fork(), exec(), wait() etc.</li>
+            </ul>
+        </li>
+        <li><strong>Signal Handling</strong>
+            <ul>
+                <li>kill(), alarm(), etc.</li>
+            </ul>
+        </li>
+    </ul>
+    
+    <h4>Example of System Call</h4>
+    <p>For example, if we need to write a program code to read data from one file, copy that data into another file. The first information that the program requires is the name of the two files, the input and output files.</p>
+    <p>In an interactive system, this type of program execution requires some system calls by OS.</p>
+    <ul>
+        <li>First call is to write a prompting message on the screen</li>
+        <li>Second, to read from the keyboard, the characters which define the two files.</li>
+    </ul>
+    
+    <h4>Why do you need System Calls in OS?</h4>
+    <p>Following are situations that need system calls in OS:</p>
+    <ul>
+        <li>Reading and writing from files demand system calls.</li>
+        <li>If a file system wants to create or delete files, system calls are required.</li>
+        <li>System calls are used for the creation and management of new processes.</li>
+        <li>Network connections need system calls for sending and receiving packets.</li>
+        <li>Access to hardware devices like scanner, and printer, need a system call.</li>
+    </ul>
+    
+    <h3>Process Identifiers</h3>
+    <p>The basic attributes of a process are its <strong>process ID (PID)</strong>, and its <strong>parent process ID (PPID)</strong>.</p>
+    <p>The functions that allow a process to obtain its PID and PPID are <strong>getpid</strong> and <strong>getppid</strong>. These functions are declared in header file <strong>&lt;unistd.h&gt;</strong>, and their prototypes are</p>
+    
+    <div class="code">
+        <pre>pid_t getpid(void);
+pid_t getppid(void);</pre>
+    </div>
+    
+    <p>The following program prints process, and parent Ids.</p>
+    <p>Run the following program and save it with the named <strong>lab8_e1.c</strong></p>
+    
+    <div class="code">
+        <pre>#include &lt;stdio.h&gt;
+#include &lt;unistd.h&gt;
+
+int main(void)
+{
+printf("The PID of this process (PID)= %d\n", getpid());
+printf("The PID of Parent process (PPID)= %d\n", getppid());
+return 0;
+}</pre>
+    </div>
+    
+    <p>The <strong>output</strong> of the above program on my computer is the following:</p>
+    <div class="terminal">
+        <span class="output">The PID of this process (PID) = 1311</span><br>
+        <span class="output">The PID of the Parent process (PPID) = [parent PID]</span>
+    </div>
+    
+    <h3>Unix System Call:</h3>
+    <p>The UNIX system provides several system calls to create and end the program, send and receive software interrupts, allocate memory, and do other useful jobs for a process.</p>
+    <p>Four system calls are provided for creating a process, ending a process, and waiting for a process to complete. These system calls are fork(), the "exec" family, wait(), and exit().</p>
+    
+    <h4 class="underline">fork() System Call:</h4>
+    <p>fork() system call is used to create a new process.</p>
+    <ul>
+        <li>You must use the fork() system call to create a new process. The prototype for the fork() system call is</li>
+    </ul>
+    <div class="code">
+        <pre>int fork()</pre>
+    </div>
+    <ul>
+        <li>fork() causes the UNIX system to create a new "child process" process with a new process ID.</li>
+    </ul>
+    
+    <p>If the call to <strong>fork()</strong> is executed successfully, Unix will make two <em>identical copies of address spaces</em>, Both processes will start their execution at the next statement following the <strong>fork()</strong> call.</p>
+    <ul>
+        <li>The procedure is called <em>forking</em></li>
+        <li>An exact copy of the process, memory values, and open resources is produced. The original process that forked, is called the <strong>parent</strong>, while the newly created, duplicate process is called the <strong>child</strong>.</li>
+        <li>The contents of the child process are identical to the contents of the parent process.</li>
+    </ul>
+    
+    <div class="image-container">
+        <img src="fork-illustration.png" alt="fork() illustration">
+    </div>
+    
+    <h4 class="underline">fork() - Identical copies of address spaces:</h4>
+    <p>Run the following program and save it with the named <strong>lab8_e3.c</strong>.</p>
+    
+    <div class="code">
+        <pre>#include &lt;unistd.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main(void)
+{
+fork();
+int x=5;
+pid_t pid = getpid();
+printf("Value of X in PID= %d is %d\n",pid,x);
+return 0;
+}</pre>
+    </div>
+    
+    <p>Both processes will have their own copy of variable x, initialized to 5. getpid() returns different values in each process because each has a unique PID. Both parent and child process are created with identical copies.</p>
+    
+    <h4 class="underline">fork() - Parent and Child run's parallel:</h4>
+    <p>After fork() statement, both process start execution in parallel(concurrent). To understand this concept, you have to implement the following exercise.</p>
+    
+    <h4 class="underline">fork() - Return Type:</h4>
+    <p>fork() returns twice, once in the parent and once in child, and it returns different values in the parent and the child. After a call to fork(), the parent's return value is the process id of the newly created child process. The child, however, has a return value of 0. On error, fork(), returns <strong>-1</strong>.</p>
+    
+    <p>Run the following program and save it with the named <strong>lab8_e4.c</strong></p>
+    
+    <div class="code">
+        <pre>#include &lt;stdio.h&gt;
+#include &lt;unistd.h&gt;
+
+int main() {
+int pid = fork();
+if (pid == 0) {
+printf("I'm the child! My PID is %d\n", getpid());
+} else {
+printf("I'm the parent! My PID is %d and my child's PID is %d\n", getpid(), pid);
+}
+return 0;
+}</pre>
+    </div>
+    
+    <h4>Complete workflow: fork(), exec(), wait(), exit():</h4>
+    <div class="image-container workflow-diagram">
+        <img src="work-flow.png" alt="Process workflow diagram">
+    </div>
+    
+    <h4 class="underline">exec() System Call & family:</h4>
+    <p>exec() routines are usually called after a call to fork().Use exec() to launch another program. This combination, known as a fork/exec, allows a process to create a child</p>
+    <p>The UNIX system calls that transform a executable binary file into a process are the "exec" family of system calls.</p>
+    <p>Forking creates a process but it is not enough to run a new program, to do that the forked child needs to overwrite its own image with the code and data of the new program and mechanism is exec() creation.</p>
+    <p>This system call runs when an executable file in the context of an already running process that replaces the older executable file. However, the original process identifier remains as a new process is not built, but stack, data, head, data, etc. are replaced by the new process.</p>
+    
+    <table class="system-call-table">
+        <tr>
+            <th>Function</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>execl()</td>
+            <td>Pass args as a list (arg0, arg1, ..., NULL)</td>
+        </tr>
+        <tr>
+            <td>execv()</td>
+            <td>Pass args as an array (argv[])</td>
+        </tr>
+        <tr>
+            <td>execle()</td>
+            <td>Like execl() but with environment array</td>
+        </tr>
+        <tr>
+            <td>execve()</td>
+            <td>Like execv() but also with environment array</td>
+        </tr>
+    </table>
+    
+    <div class="file-pair">
+        <div class="file-box">
+            <h4>File1: ex1.c</h4>
+            <div class="code">
+                <pre>#include &lt;stdio.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main(int argc, char *argv[])
+{
+printf("PID of ex1.c = %d\n", getpid());
+char *args[] = {"Hello", NULL};
+execv("./ex2", args);
+printf("Back to ex1.c");
+return 0;
+}</pre>
+            </div>
+        </div>
+        
+        <div class="file-box">
+            <h4>File2: ex2.c</h4>
+            <div class="code">
+                <pre>#include &lt;stdio.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main(int argc, char *argv[])
+{
+printf("We are in ex2.c\n");
+printf("PID of ex2.c = %d\n", getpid());
+return 0;
+}</pre>
+            </div>
+        </div>
+    </div>
+    
+    <ul>
+        <li>ex1.c → starts first, prints its own PID, and then uses execv() to run ex2.c</li>
+        <li>ex2.c → replaces ex1.c in memory and becomes the new running program</li>
+    </ul>
+    
+    <h4 class="underline">exit() System Call:</h4>
+    <p>The exit() system call ends a process and returns a value to it parent. The prototype for the exit() system call is:</p>
+    <div class="code">
+        <pre>void exit(status)
+int status;</pre>
+    </div>
+    
+    <div class="code">
+        <pre>#include &lt;stdio.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main(void)
+{
+printf("The PID of this process (PID)= %d\n", getpid());
+exit(0);
+printf("The PID of Parent process (PPID)= %d\n", getppid());
+return 0;
+}</pre>
+    </div>
+    
+    <p>where status is an integer between 0 and 255. This number is returned to the parent via wait() as the exit status of the process.</p>
+    <p>By convention, when a process exits with a status of zero that means it didn't encounter any problems; when a process exit with a non-zero status that means it did have problems. exit() is actually not a system routine; it is a library routine that call the system routine exit().</p>
+    <p>exit() cleans up the standard I/O streams before calling exit(), so any output that has been buffered but not yet actually written out is flushed.</p>
+    
+    <h4 class="underline">wait() System Call:</h4>
+    <p>You can control the execution of child processes by calling wait() in the parent. wait() forces the parent to suspend execution until the child is finished. wait() returns the process ID of a child process that finished.</p>
+    <p>If the child finishes before the parent gets around to calling wait(), then when wait() is called by the parent, it will return immediately with the child's process ID. (It is possible to have more than one child process by simply calling fork() more than once.). The prototype for the wait() system call is:</p>
+    
+    <div class="code">
+        <pre>int wait(status)
+int *status;</pre>
+    </div>
+    
+    <p>where status is a pointer to an integer where the UNIX system stores the value returned by the child process. wait() returns the process ID of the process that ended.</p>
+    
+    <div class="code">
+        <pre>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;sys/wait.h&gt;
+
+int main() {
+pid_t pid = fork();
+if (pid == 0) {
+// Child process
+printf("Child: I'm working...\n");
+sleep(2); // simulate work
+printf("Child: I'm done!\n");
+exit(0);
+} else {
+// Parent process
+printf("Parent: Waiting for child to finish...\n");
+wait(NULL); // wait for the child
+printf("Parent: Child has finished. I can continue.\n");
+}
+return 0;
+}</pre>
+    </div>
+</div>
+
+<div id="lab9" class="tab-content" >
+    <h2>Introduction to Shell Scripting</h2>
+    <p>A shell is a program that accepts user instructions (commands or scripts) and passes valid ones to the kernel for execution. It's a command language interpreter and provides an environment for user interaction.</p>
+    
+    <div class="note">
+        <strong>Common Shell Types:</strong> BASH, CSH, TCSH, KSH
+    </div>
+    
+    <h3>Shell Script Basics</h3>
+    <ul>
+        <li><strong>Shell Command:</strong> Any instruction to perform tasks (e.g., <code>ls</code>, <code>mkdir</code>, <code>date</code>)</li>
+        <li><strong>Shell Script:</strong> A file containing Linux commands and shell-specific constructs</li>
+        <li><strong>Shell Programming:</strong> Writing sets of commands in files with predefined syntax</li>
+    </ul>
+    
+    <h2>Creating and Executing Shell Scripts</h2>
+    
+    <h3>Basic Script Example</h3>
+    <div class="code">
+        #!/bin/sh<br>
+        clear<br>
+        echo "Welcome to Shell Scripting"
+    </div>
+    
+    <h3>Execution Steps</h3>
+    <div class="terminal">
+        <span class="prompt">$ </span><span class="command">chmod u+x firstscript</span> <em># Set execution permission</em><br>
+        <span class="prompt">$ </span><span class="command">./firstscript</span> <em># Run the script</em>
+    </div>
+    
+    <h3>Comments in Scripts</h3>
+    <div class="code">
+        # This is a comment line<br>
+        date # Show current date (comment after command)<br>
+        echo "Hello!!!" # Prints Hello!!! on screen
+    </div>
+    
+    <div class="note">
+        <strong>Important:</strong> The shebang line <code>#!/bin/sh</code> must be the first line to specify which shell should execute the script.
+    </div>
+    
+    <h2>Shell Variables</h2>
+    
+    <h3>Types of Variables</h3>
+    <table>
+        <tr>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Examples</th>
+        </tr>
+        <tr>
+            <td>User Defined</td>
+            <td>Variables you create to store data</td>
+            <td><code>name="Alice"</code></td>
+        </tr>
+        <tr>
+            <td>Predefined</td>
+            <td>Variables automatically provided by the shell</td>
+            <td><code>$HOME</code>, <code>$PATH</code>, <code>$USER</code></td>
+        </tr>
+        <tr>
+            <td>Positional Parameters</td>
+            <td>Store command-line arguments</td>
+            <td><code>$1</code>, <code>$2</code>, ... <code>$n</code></td>
+        </tr>
+        <tr>
+            <td>System Shell Variables</td>
+            <td>Special variables set by the system</td>
+            <td><code>$SHELL</code>, <code>$PWD</code>, <code>$UID</code>, <code>$?</code></td>
+        </tr>
+    </table>
+    
+    <h3>Variable Examples</h3>
+    <div class="code">
+        # User-defined variable<br>
+        greeting="Hello, World!"<br>
+        <br>
+        # Predefined variable<br>
+        echo "Your home directory: $HOME"<br>
+        <br>
+        # Positional parameter<br>
+        echo "First argument: $1"<br>
+        <br>
+        # System shell variable<br>
+        echo "Current shell: $SHELL"
+    </div>
+    
+    <h2>Working with Variables</h2>
+    
+    <h3>Variable Assignment</h3>
+    <div class="code">
+        name="Alice"  # No spaces around =<br>
+        menu="The Main Menu"  # Use quotes for spaces<br>
+        empty=""  # Null string
+    </div>
+    
+    <h3>Reading User Input</h3>
+    <div class="code">
+        read X Y Z  # Reads multiple values
+    </div>
+    
+    <h2>Arithmetic Operations</h2>
+    
+    <h3>Integer Arithmetic with expr</h3>
+    <div class="code">
+        a=10<br>
+        b=5<br>
+        result=`expr $a + $b`<br>
+        echo "Sum is: $result"<br>
+        <br>
+        # Note: Spaces are required around operators
+    </div>
+    
+    <h3>Alternative Arithmetic Syntax</h3>
+    <div class="code">
+        result=$((a + b))<br>
+        echo "Result: $result"
+    </div>
+    
+    <h3>Floating-Point Arithmetic with bc</h3>
+    <div class="code">
+        echo "5.5+6.9" | bc<br>
+        echo "scale=3; 15/2" | bc  # Output: 7.500<br>
+        var=$(echo "scale=3; sqrt(30)" | bc)<br>
+        echo $var  # Output: 5.477
+    </div>
+    
+    <div class="note">
+        <strong>Note:</strong> The <code>scale</code> variable in bc determines decimal places in division.
+    </div>
+    
+    
+    <div class="note">
+        <strong>Key Points:</strong><br>
+        - Shell scripts automate command execution<br>
+        - Variables store data for use in scripts<br>
+        - Use <code>expr</code> or <code>$(( ))</code> for integer math<br>
+        - Use <code>bc</code> for floating-point calculations<br>
+        - Always include the shebang line at the start of scripts
+    </div>
+</div>
+
+<div id="lab10"  class="tab-content" >
+    <h2>Positional Parameters</h2>
+        <p>Shell scripts can accept command-line arguments through positional parameters:</p>
+        
+        <table>
+            <tr>
+                <th>Variable</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td><code>$0</code></td>
+                <td>Script name</td>
+            </tr>
+            <tr>
+                <td><code>$1-$9</code></td>
+                <td>1st through 9th arguments</td>
+            </tr>
+            <tr>
+                <td><code>$#</code></td>
+                <td>Number of arguments</td>
+            </tr>
+            <tr>
+                <td><code>$*</code></td>
+                <td>All arguments as single string</td>
+            </tr>
+            <tr>
+                <td><code>$@</code></td>
+                <td>All arguments as separate quoted strings</td>
+            </tr>
+            <tr>
+                <td><code>$$</code></td>
+                <td>Process ID (PID)</td>
+            </tr>
+            <tr>
+                <td><code>$?</code></td>
+                <td>Exit status of last command</td>
+            </tr>
+        </table>
+        
+        <div class="code">
+            # Example script<br>
+            echo "Script name: $0"<br>
+            echo "First argument: $1"<br>
+            echo "Second argument: $2"<br>
+            echo "Total arguments: $#"
+        </div>
+        
+        <h2>Condition Testing</h2>
+        <p>Shell provides two ways to test conditions: <code>test</code> command and <code>[ ]</code> syntax.</p>
+        
+        <h3>Numeric Comparisons</h3>
+        <table>
+            <tr>
+                <th>Operator</th>
+                <th>Meaning</th>
+                <th>Example</th>
+            </tr>
+            <tr>
+                <td><code>-eq</code></td>
+                <td>Equal</td>
+                <td><code>[ $a -eq $b ]</code></td>
+            </tr>
+            <tr>
+                <td><code>-ne</code></td>
+                <td>Not equal</td>
+                <td><code>[ $a -ne $b ]</code></td>
+            </tr>
+            <tr>
+                <td><code>-lt</code></td>
+                <td>Less than</td>
+                <td><code>[ $a -lt $b ]</code></td>
+            </tr>
+            <tr>
+                <td><code>-le</code></td>
+                <td>Less or equal</td>
+                <td><code>[ $a -le $b ]</code></td>
+            </tr>
+            <tr>
+                <td><code>-gt</code></td>
+                <td>Greater than</td>
+                <td><code>[ $a -gt $b ]</code></td>
+            </tr>
+            <tr>
+                <td><code>-ge</code></td>
+                <td>Greater or equal</td>
+                <td><code>[ $a -ge $b ]</code></td>
+            </tr>
+        </table>
+        
+        <h3>String Comparisons</h3>
+        <table>
+            <tr>
+                <th>Operator</th>
+                <th>Meaning</th>
+                <th>Example</th>
+            </tr>
+            <tr>
+                <td><code>=</code></td>
+                <td>Equal</td>
+                <td><code>[ "$str1" = "$str2" ]</code></td>
+            </tr>
+            <tr>
+                <td><code>!=</code></td>
+                <td>Not equal</td>
+                <td><code>[ "$str1" != "$str2" ]</code></td>
+            </tr>
+            <tr>
+                <td><code>-n</code></td>
+                <td>Not null</td>
+                <td><code>[ -n "$str1" ]</code></td>
+            </tr>
+            <tr>
+                <td><code>-z</code></td>
+                <td>Null</td>
+                <td><code>[ -z "$str1" ]</code></td>
+            </tr>
+        </table>
+        
+        <h3>File Tests</h3>
+        <table>
+            <tr>
+                <th>Test</th>
+                <th>Meaning</th>
+            </tr>
+            <tr>
+                <td><code>-e</code></td>
+                <td>File exists</td>
+            </tr>
+            <tr>
+                <td><code>-f</code></td>
+                <td>Regular file</td>
+            </tr>
+            <tr>
+                <td><code>-d</code></td>
+                <td>Directory</td>
+            </tr>
+            <tr>
+                <td><code>-r</code></td>
+                <td>Readable</td>
+            </tr>
+            <tr>
+                <td><code>-w</code></td>
+                <td>Writable</td>
+            </tr>
+            <tr>
+                <td><code>-x</code></td>
+                <td>Executable</td>
+            </tr>
+            <tr>
+                <td><code>-s</code></td>
+                <td>Non-empty</td>
+            </tr>
+        </table>
+        
+        <h2>Control Structures</h2>
+        
+        <h3>if-then-else</h3>
+        <div class="code">
+            # Basic if structure<br>
+            if [ condition ]; then<br>
+            &nbsp;&nbsp;commands<br>
+            fi<br>
+            <br>
+            # With else<br>
+            if [ condition ]; then<br>
+            &nbsp;&nbsp;commands<br>
+            else<br>
+            &nbsp;&nbsp;other commands<br>
+            fi<br>
+            <br>
+            # Example<br>
+            if [ $num -gt 10 ]; then<br>
+            &nbsp;&nbsp;echo "Greater than 10"<br>
+            else<br>
+            &nbsp;&nbsp;echo "10 or less"<br>
+            fi
+        </div>
+        
+        <h3>if-elif-else</h3>
+        <div class="code">
+            if [ condition1 ]; then<br>
+            &nbsp;&nbsp;# commands if condition1 is true<br>
+            elif [ condition2 ]; then<br>
+            &nbsp;&nbsp;# commands if condition2 is true<br>
+            else<br>
+            &nbsp;&nbsp;# commands if no condition is true<br>
+            fi
+        </div>
+        
+        <h3>case Statement</h3>
+        <div class="code">
+            case $variable in<br>
+            &nbsp;&nbsp;pattern1)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;commands ;;<br>
+            &nbsp;&nbsp;pattern2)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;commands ;;<br>
+            &nbsp;&nbsp;*)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;default commands ;;<br>
+            esac<br>
+            <br>
+            # Example<br>
+            read -p "Enter grade: " grade<br>
+            case $grade in<br>
+            &nbsp;&nbsp;A|a) echo "Excellent" ;;<br>
+            &nbsp;&nbsp;B|b) echo "Good" ;;<br>
+            &nbsp;&nbsp;*) echo "Keep trying" ;;<br>
+            esac
+        </div>
+        
+        <h2>Logical Operators</h2>
+        <table>
+            <tr>
+                <th>Operator</th>
+                <th>Meaning</th>
+                <th>Syntax</th>
+            </tr>
+            <tr>
+                <td><code>-a</code> or <code>&&</code></td>
+                <td>Logical AND</td>
+                <td><code>[ $a -gt 0 -a $b -gt 0 ]</code><br>
+                <code>[ $a -gt 0 ] && [ $b -gt 0 ]</code></td>
+            </tr>
+            <tr>
+                <td><code>-o</code> or <code>||</code></td>
+                <td>Logical OR</td>
+                <td><code>[ $a -eq 0 -o $b -eq 0 ]</code><br>
+                <code>[ $a -eq 0 ] || [ $b -eq 0 ]</code></td>
+            </tr>
+            <tr>
+                <td><code>!</code></td>
+                <td>Logical NOT</td>
+                <td><code>[ ! $a -eq 0 ]</code></td>
+            </tr>
+        </table>
+        
+        <div class="note">
+            <strong>Key Points:</strong><br>
+            - Use positional parameters (<code>$1</code>, <code>$2</code>, etc.) to handle command-line arguments<br>
+            - Test conditions with <code>test</code> or <code>[ ]</code> syntax<br>
+            - Control program flow with <code>if</code>, <code>elif</code>, <code>else</code>, and <code>case</code><br>
+            - Combine conditions with logical operators (<code>-a</code>, <code>-o</code>, <code>!</code>)<br>
+            - Always put spaces around conditions and operators
+        </div>
+</div>
+
+<div id="lab11"  class="tab-content" >
+    <h2>Objective</h2>
+        <p>To implement and understand looping constructs and functions in shell scripting.</p>
+        
+        <div class="note">
+            <strong>Key Concept:</strong> Loops execute commands repeatedly until a condition is met, while functions help organize code into reusable blocks.
+        </div>
+        
+        <h2>Looping Constructs</h2>
+        
+        <h3>1. For Loop</h3>
+        <div class="terminal">
+<pre>for (( initialization; condition; increment/decrement ))
+do
+    commands
+done</pre>
+        </div>
+        
+        <h4>Example:</h4>
+        <div class="code">
+for (( i = 1; i <= 5; i++ ))
+do
+    echo $i
+done
+        </div>
+        <div class="output">
+Output:<br>
+1<br>
+2<br>
+3<br>
+4<br>
+5
+        </div>
+        
+        <h4>Nested For Loop</h4>
+        <div class="code">
+for (( i = 1; i <= 5; i++ ))   # Outer loop
+do
+    for (( j = 1; j <= 5; j++ )) # Inner loop
+    do
+        echo -n "$i "
+    done
+    echo "" # New line
+done
+        </div>
+        <div class="output">
+Output:<br>
+1 1 1 1 1<br>
+2 2 2 2 2<br>
+3 3 3 3 3<br>
+4 4 4 4 4<br>
+5 5 5 5 5
+        </div>
+        
+        <h3>2. For-in Loop</h3>
+        <div class="terminal">
+<pre>for variable in value1 value2 value3...
+do
+    commands
+done</pre>
+        </div>
+        
+        <h4>Example:</h4>
+        <div class="code">
+for count in 1 2 3
+do
+    echo "In the loop for $count time"
+done
+        </div>
+        <div class="output">
+Output:<br>
+In the loop for 1 time<br>
+In the loop for 2 time<br>
+In the loop for 3 time
+        </div>
+        
+        <h3>3. While Loop</h3>
+        <div class="terminal">
+<pre>while [ condition ]
+do
+    commands
+done</pre>
+        </div>
+        
+        <h4>Example:</h4>
+        <div class="code">
+a=1
+while [ $a -le 5 ]
+do
+    echo $a
+    a=$((a + 1)) # increment a by 1
+done
+        </div>
+        <div class="output">
+Output:<br>
+1<br>
+2<br>
+3<br>
+4<br>
+5
+        </div>
+        
+        <div class="note">
+            <strong>Note:</strong> The <code>-n</code> option in <code>echo</code> prevents printing a newline character, useful for formatting output.
+        </div>
+        
+        <h2>Shell Functions</h2>
+        
+        <h3>Function Definition</h3>
+        <div class="terminal">
+<pre>function_name () {
+    commands
+}</pre>
+        </div>
+        
+        <h4>Basic Example:</h4>
+        <div class="code">
+Hello () {
+    echo "Hello World"
+    echo "my name is $1"
+}
+Hello Sara
+        </div>
+        <div class="output">
+Output:<br>
+Hello World<br>
+my name is Sara
+        </div>
+        
+        <h3>Function Parameters</h3>
+        <div class="code">
+Hello () {
+    echo "Hello World $1 $2"
+}
+Hello Zara Ali
+        </div>
+        <div class="output">
+Output:<br>
+Hello World Zara Ali
+        </div>
+        
+        <h3>Returning Values</h3>
+        <div class="code">
+add() {
+    result=$(( $1 + $2 ))
+    echo $result
+}
+sum=$(add 5 10)
+echo "Sum is: $sum"
+        </div>
+        <div class="output">
+Output:<br>
+Sum is: 15
+        </div>
+        
+        <div class="note">
+            <strong>Important:</strong> Using <code>exit</code> in a function terminates the entire script, while <code>return</code> only exits the function.
+        </div>
+        
+</div>
+
+<div id="lab12"  class="tab-content" >
+    <div class="note">
+        <p>A signal is an event generated by the UNIX and Linux systems in response to some condition. Upon receipt of a signal, a process may take action. Signals are software interrupts that can be generated by user actions (like pressing Ctrl+C) or by processes.</p>
+    </div>
+    
+    <h2>Introduction to Signals</h2>
+    <p>Signals are notifications sent to a process to notify it of important events. They interrupt whatever the process is doing and force it to handle them immediately. Each signal has:</p>
+    <ul>
+        <li>An integer number (1, 2, etc.)</li>
+        <li>A symbolic name beginning with SIG (e.g., SIGINT, SIGALRM)</li>
+    </ul>
+    
+    <div class="terminal">
+        <span class="prompt">$</span> <span class="command">kill -l</span><br>
+        <span>1) SIGHUP 2) SIGINT 3) SIGQUIT 4) SIGILL 5) SIGTRAP ...</span>
+    </div>
+    
+    <h2>Common Signals</h2>
+    <table>
+        <tr>
+            <th>Signal</th>
+            <th>Value</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>SIGHUP</td>
+            <td>1</td>
+            <td>Hangup detected on controlling terminal or death of controlling process</td>
+        </tr>
+        <tr>
+            <td>SIGINT</td>
+            <td>2</td>
+            <td>Interrupt from keyboard (Ctrl-C)</td>
+        </tr>
+        <tr>
+            <td>SIGQUIT</td>
+            <td>3</td>
+            <td>Quit from keyboard (Ctrl-\)</td>
+        </tr>
+        <tr>
+            <td>SIGKILL</td>
+            <td>9</td>
+            <td>Sure kill signal - cannot be caught or ignored</td>
+        </tr>
+        <tr>
+            <td>SIGTERM</td>
+            <td>15</td>
+            <td>Termination signal (default for kill command)</td>
+        </tr>
+    </table>
+    
+    <h2>Signal Handling Options</h2>
+    <p>When a process receives a signal, it can:</p>
+    <ol>
+        <li><strong>Ignore the signal</strong> (except SIGKILL and SIGSTOP)</li>
+        <li><strong>Accept the default action</strong> (defined by the OS)</li>
+        <li><strong>Execute custom code</strong> to handle the signal</li>
+    </ol>
+    
+    <h2>The Kill Command</h2>
+    <p>The <code>kill</code> command sends signals to processes:</p>
+    <div class="terminal">
+        <span class="prompt">$</span> <span class="command">kill -sig pid</span><br>
+        <span>Where <strong>sig</strong> is the signal number/name and <strong>pid</strong> is the process ID</span>
+    </div>
+    
+    <p>To find your process ID:</p>
+    <div class="terminal">
+        <span class="prompt">$</span> <span class="command">echo "process id $$"</span>
+    </div>
+    
+    <h2>Trap Command in Shell Scripts</h2>
+    <p>The <code>trap</code> command allows scripts to catch signals and execute commands:</p>
+    
+    <div class="code">
+        <pre>
+#!/bin/bash
+trap "echo 'Ctrl+C disabled!'" SIGINT  # Catch Ctrl+C
+count=1
+while [ $count -le 5 ]
+do
+echo "Loop $count"
+sleep 2
+count=$((count + 1))
+done
+# Restore default action
+trap - SIGINT</pre>
+    </div>
+    
+    <h2>Signal Handling in C</h2>
+    <p>The <code>signal()</code> function allows C programs to handle signals:</p>
+    <div class="code">
+        <pre>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;signal.h&gt;
+#include &lt;unistd.h&gt;
+
+void catch_signal(int sig) {
+printf("\nSignal %d caught! You pressed Ctrl+C\n", sig);
+signal(SIGINT, catch_signal); // Re-register signal handler
+}
+
+int main() {
+signal(SIGINT, catch_signal); // Register handler
+while (1) {
+    printf("Working...\n");
+    sleep(1);
+}
+return 0;
+}</pre>
+    </div>
+    
+    <div class="note">
+        <p><strong>Important:</strong> In some systems, the signal handler is reset after being called, so you need to re-register it within the handler function.</p>
+    </div>
+    
+    
+    
+    <h2>Key Concepts</h2>
+    <ul>
+        <li>Signals are asynchronous notifications sent to processes</li>
+        <li>Ctrl-C generates SIGINT, Ctrl-\ generates SIGQUIT</li>
+        <li>SIGKILL (9) cannot be caught or ignored</li>
+        <li>Use <code>kill -l</code> to list all available signals</li>
+        <li>Shell scripts use <code>trap</code> for signal handling</li>
+        <li>C programs use <code>signal()</code> function for signal handling</li>
+    </ul>
+</div>
+
+
+</div>
+<script>
+    function showContent(sectionId) {
+      const allTabs = document.querySelectorAll('.tab-content');
+      allTabs.forEach(tab => {
+        tab.classList.remove('active');
+      });
+
+      const activeTab = document.getElementById(sectionId);
+      activeTab.classList.add('active');
+    }
+  </script>
+</body>
+</html>
